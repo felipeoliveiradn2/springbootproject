@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Profile;
 import com.projectspringboot.projectspring.entities.User;
 import com.projectspringboot.projectspring.repositories.UserRepository;
 
-@Configuration
+@Configuration //Notation para informar que é uma classe de configuracao
 @Profile("test")
 
 public class TestConfig implements CommandLineRunner { // CommandLIneRunner para iniciar o testconfig quando o programa for iniciado
@@ -26,8 +26,6 @@ public class TestConfig implements CommandLineRunner { // CommandLIneRunner para
 
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		
-	}
-	
-	
+	}	
 
 }

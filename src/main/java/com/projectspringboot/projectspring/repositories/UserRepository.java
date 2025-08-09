@@ -4,10 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.projectspringboot.projectspring.entities.User;
 
-com.projectspringboot.projectspring.repositories;
-
-public interface UserRepository extends JpaRepository<User, Long> {
-	
-	
+// a anotation aqui é opcional, porque está herdando do JpaRepository
+public interface UserRepository extends JpaRepository <User, Long> {
 	
 }
