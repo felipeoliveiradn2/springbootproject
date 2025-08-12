@@ -15,7 +15,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_user")	
+@Table(name = "tb_user")
 
 public class User implements Serializable {
 
@@ -29,18 +29,15 @@ public class User implements Serializable {
 		private String phone;
 		private String password;
 		
-		// o * representa que é uma lista;
 		@JsonIgnore
-		@OneToMany(mappedBy = "client") //acessa automaticamente os pedidos feitos
-		private List<Order> orders = new ArrayList();
+		@OneToMany(mappedBy = "client")
+		private List<Order> orders = new ArrayList<>();
 		
-		// No caso de coleção, usa-se apenas o get
-		
-		public User () {
+		public User() {
 			
 		}
 
-		public User (Long id, String name, String email, String phone, String password) {
+		public User(Long id, String name, String email, String phone, String password) {
 			this.id = id;
 			this.name = name;
 			this.email = email;
@@ -87,10 +84,7 @@ public class User implements Serializable {
 		public void setPassword(String password) {
 			this.password = password;
 		}
-		
-		public List<Order> getOrders() {
-			return orders;
-		}
+
 		@Override
 		public int hashCode() {
 			return Objects.hash(id);
@@ -107,5 +101,4 @@ public class User implements Serializable {
 			User other = (User) obj;
 			return Objects.equals(id, other.id);
 		}		
-		
 }
