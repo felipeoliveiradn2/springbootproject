@@ -2,10 +2,8 @@ package com.projectspringboot.projectspring.services;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.projectspringboot.projectspring.entities.Product;
 import com.projectspringboot.projectspring.repositories.ProductRepository;
 

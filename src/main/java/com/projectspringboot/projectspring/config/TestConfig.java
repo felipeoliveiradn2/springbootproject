@@ -1,12 +1,11 @@
 package com.projectspringboot.projectspring.config;
+
 import java.time.Instant;
 import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-
 import com.projectspringboot.projectspring.entities.Category;
 import com.projectspringboot.projectspring.entities.Order;
 import com.projectspringboot.projectspring.entities.Product;
@@ -34,7 +33,6 @@ public class TestConfig implements CommandLineRunner { // CommandLIneRunner para
 	@Autowired
 	private ProductRepository productRepository;
 	
-	
 	@Override
 	public void run(String... args) throws Exception { //tudo dentro do run é executado quando a aplicação for iniciada
 		
@@ -47,9 +45,23 @@ public class TestConfig implements CommandLineRunner { // CommandLIneRunner para
 		Product p3 = new Product(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
 		Product p4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
 		Product p5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
-
+		
+		//salva todas categorias em um array de lista
 		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
 		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+		
+		//usa OO para adicionar as categorias aos produtos
+		p1.getCategories().add(cat2);
+		p2.getCategories().add(cat1);
+		p2.getCategories().add(cat3);
+		p3.getCategories().add(cat3);
+		p4.getCategories().add(cat3);
+		p5.getCategories().add(cat2);
+		
+		//chama novamente o productRepository para salvar tudo na lista com as associações
+		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+		
+		
 		
 		User u1 = new User(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
 		User u2 = new User(null, "Alex Green", "alex@gmail.com", "977777777", "123456"); 
