@@ -1,7 +1,9 @@
 package com.projectspringboot.projectspring.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,6 +20,8 @@ public class Category implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	//está no diagrama * (lista) de products
+	private Set <Product> products = new HashSet<>();
 	
 	//toda classe em JPA precisa de um construtor vazio
 	public Category() {
@@ -61,6 +65,10 @@ public class Category implements Serializable {
 			return false;
 		Category other = (Category) obj;
 		return Objects.equals(id, other.id);
+	}
+
+	public Set <Product> getProducts() {
+		return products;
 	}
 	
 }
