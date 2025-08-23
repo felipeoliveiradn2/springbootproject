@@ -11,7 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 //essa é a classe auxiliar, colocar no pacote PK. Também lembrar de que não tem construtor em classe auxiliar, ela servirá para armazenar as informaçoes mais antigar da classe Order
 
-@Embeddable // é uma anotation para a classe auxiliar 
+@Embeddable // é uma anotation para a classe auxiliar juntar as outras classes
 public class OrderItemPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
