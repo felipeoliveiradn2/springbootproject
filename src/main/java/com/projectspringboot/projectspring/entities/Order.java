@@ -71,8 +71,6 @@ public class Order implements Serializable{
 	public void setMoment(Instant moment) {
 		this.moment = moment;
 	}
-	
-	
 
 	public User getClient() {
 		return client;
