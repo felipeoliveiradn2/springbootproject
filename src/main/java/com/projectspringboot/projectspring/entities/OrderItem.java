@@ -17,6 +17,7 @@ public class OrderItem implements Serializable{
 	
 	@EmbeddedId
 	private OrderItemPK id = new OrderItemPK(); //o Id vem da orderItemPK
+
 	private Integer quantity;
 	private Double price;
 	
@@ -25,9 +26,8 @@ public class OrderItem implements Serializable{
 	
 	//o ID do constructor e get and set serao inseridos posteriormente
 	public OrderItem(Order order, Product product, Integer quantity, Double price) {
-		super();
-		id.setOrder(order);
-		id.setProduct(product);
+		id.setOrder(order); //puxa o pedido da outra classe
+		id.setProduct(product); //puxa o produto da outra classe
 		this.quantity = quantity;
 		this.price = price;
 	}
@@ -80,6 +80,5 @@ public class OrderItem implements Serializable{
 			return false;
 		OrderItem other = (OrderItem) obj;
 		return Objects.equals(id, other.id);
-	}	
-	
+	}
 }
