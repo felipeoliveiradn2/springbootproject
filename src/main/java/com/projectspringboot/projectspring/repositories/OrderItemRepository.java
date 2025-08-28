@@ -6,6 +6,6 @@ import com.projectspringboot.projectspring.entities.OrderItem;
 import com.projectspringboot.projectspring.entities.pk.OrderItemPK;
 
 // a anotation aqui é opcional, porque está herdando do JpaRepository
-public interface OrderItemRepository extends JpaRepository <OrderItem, OrderItemPK> {
+public interface OrderItemRepository extends JpaRepository<OrderItem, OrderItemPK> { 
 	
 }

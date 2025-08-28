@@ -30,23 +30,21 @@ public class Order implements Serializable{
 	private Long id;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant moment;
-	
     //instanciação do orderStatus como inteiro, porque os enums foram declarados assim "enum(numero)"
 	private Integer orderStatus;
 	
 	@ManyToOne
 	@JoinColumn (name = "client_id")
 	private User client;
-	
-	@JsonIgnore
-	@OneToMany (mappedBy= "id.order")
+	//o set<OrderItem> que irá buscar os items em OrderItem por id
+	@OneToMany (mappedBy = "id.order")
 	private Set<OrderItem> items = new HashSet<>();
 
 	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
 	private Payment payment;
 		
 	public Order() {
-	}
+	}	
 
 	public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {
 		super();
@@ -93,7 +91,6 @@ public class Order implements Serializable{
 		this.client = client;
 	}
 	
-	
 	public Payment getPayment() {
 		return payment;
 	}
@@ -106,7 +103,14 @@ public class Order implements Serializable{
 		return items;
 	}
 	
-
+	public Double getTotal() {
+		double sum = 0.0;
+		for (OrderItem x : items) {
+			sum += x.getSubTotal();
+		}
+		return sum;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

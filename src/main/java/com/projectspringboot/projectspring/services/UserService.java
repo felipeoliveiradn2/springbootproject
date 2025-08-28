@@ -10,7 +10,7 @@ import com.projectspringboot.projectspring.entities.User;
 import com.projectspringboot.projectspring.repositories.UserRepository;
 
 @Service
-public class UserService {
+public class UserService { 
 
 	@Autowired
 	private UserRepository repository;
@@ -26,4 +26,7 @@ public class UserService {
 		return obj.get();
 	}
 	
+	public User insert(User obj) {
+		return repository.save(obj);
+	}		
 }
